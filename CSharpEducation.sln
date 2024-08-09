@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task2", "Task2", "{1F328E83
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe", "TicTacToe\TicTacToe.csproj", "{6E7DC162-3EEB-4407-8887-F23453542342}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task3", "Task3", "{77B762F8-7306-48B4-831A-B032263524D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonebook", "Phonebook\Phonebook.csproj", "{BC0F67BF-7D2B-471B-97EC-68D00E0381E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +27,17 @@ Global
 		{6E7DC162-3EEB-4407-8887-F23453542342}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E7DC162-3EEB-4407-8887-F23453542342}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E7DC162-3EEB-4407-8887-F23453542342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC0F67BF-7D2B-471B-97EC-68D00E0381E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC0F67BF-7D2B-471B-97EC-68D00E0381E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC0F67BF-7D2B-471B-97EC-68D00E0381E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC0F67BF-7D2B-471B-97EC-68D00E0381E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6E7DC162-3EEB-4407-8887-F23453542342} = {1F328E83-3620-4C2E-BB9A-0554765F870E}
+		{BC0F67BF-7D2B-471B-97EC-68D00E0381E1} = {77B762F8-7306-48B4-831A-B032263524D0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {69E72AB8-D1D6-41AF-92A8-E74D21B7D630}
