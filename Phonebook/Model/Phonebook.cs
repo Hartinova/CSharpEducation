@@ -23,24 +23,22 @@ namespace Phonebook.Model
     /// <summary>
     /// Список абонентов.
     /// </summary>
-    public List<Abonent> abonents;
-
-    private Phonebook() 
-    {
-      abonents = ReadAbonentsFromFile();
-    }
+    public List<Abonent> Abonents { get; private set; }
 
     /// <summary>
     /// Получить единственный экземпляр класса Телефонная книга.
     /// </summary>
     /// <returns></returns>
-    public static Phonebook GetPhonebook()
+    public static Phonebook SinglePhonebook
     {
-      if (phonebook == null)
+      get
       {
-        phonebook = new Phonebook();
+        if (phonebook == null)
+        {
+          phonebook = new Phonebook();
+        }
+        return phonebook;
       }
-      return phonebook;
     }
 
     /// <summary>
@@ -49,8 +47,8 @@ namespace Phonebook.Model
     /// <returns>Список абонентов.</returns>
     private List<Abonent> ReadAbonentsFromFile()
     {
-      abonents = new List<Abonent>();
-      
+      Abonents = new List<Abonent>();
+
       try
       {
         if (File.Exists(FilePhonebook))
@@ -60,7 +58,7 @@ namespace Phonebook.Model
           string line = sr.ReadLine();
           while (line != null)
           {
-            abonents.Add(new Abonent(line));
+            Abonents.Add(new Abonent(line));
             line = sr.ReadLine();
           }
 
@@ -72,7 +70,7 @@ namespace Phonebook.Model
         Console.WriteLine("Exception: " + e.Message);
       }
 
-      return abonents;
+      return Abonents;
     }
 
     /// <summary>
@@ -80,12 +78,13 @@ namespace Phonebook.Model
     /// </summary>
     /// <param name="name">Имя абонента.</param>
     /// <param name="phoneNumber">Номер телефона.</param>
+    /// <exception cref="ArgumentException">Исключение вызывается, если абонент уже присутствует в списке абонентов.</exception>
     public void AddAbonent(string name, string phoneNumber)
-    {     
-      if (!GetPhoneNumberByName(name,out string  number))
+    {
+      if (!GetPhoneNumberByName(name, out string number))
       {
         var abonent = new Abonent(name, phoneNumber);
-        abonents.Add(abonent);
+        Abonents.Add(abonent);
       }
       else
       {
@@ -99,7 +98,7 @@ namespace Phonebook.Model
     /// <param name="abonent">Удаляемый абонент.</param>
     public void DeleteAbonent(Abonent abonent)
     {
-      abonents.Remove(abonent);
+      Abonents.Remove(abonent);
     }
 
     /// <summary>
@@ -112,8 +111,9 @@ namespace Phonebook.Model
     {
       number = "";
       bool result = false;
+      name=name.Trim().ToLower();
 
-      var abonent = abonents.Where(e => e.Name.Trim().ToLower()==name.Trim().ToLower()).FirstOrDefault();
+      var abonent = Abonents.Where(e => e.NameTrimLower == name).FirstOrDefault();
       if (abonent != null)
       {
         number = abonent.PhoneNumber;
@@ -133,8 +133,9 @@ namespace Phonebook.Model
     {
       name = "";
       bool result = false;
+      number=number.Trim();
 
-      var abonent = abonents.Where(e => e.PhoneNumber.Trim().ToLower() == number.Trim().ToLower()).FirstOrDefault();
+      var abonent = Abonents.Where(e => e.PhoneNumber == number).FirstOrDefault();
       if (abonent != null)
       {
         name = abonent.Name;
@@ -153,11 +154,11 @@ namespace Phonebook.Model
       {
         StreamWriter sw = new StreamWriter(FilePhonebook);
 
-        foreach (Abonent abonent in abonents)
-        { 
+        foreach (Abonent abonent in Abonents)
+        {
           sw.WriteLine($"{abonent.Id};{abonent.Name};{abonent.PhoneNumber}");
         }
-      
+
         sw.Close();
       }
       catch (Exception e)
@@ -171,35 +172,16 @@ namespace Phonebook.Model
     /// </summary>
     public void PrintAbonents()
     {
-      foreach(var  abonent in abonents)
+      foreach (var abonent in Abonents)
       {
         Console.WriteLine($"Идентификатор: {abonent.Id}; Имя: {abonent.Name}; Номер телефона: {abonent.PhoneNumber}");
       }
       Console.ReadLine();
     }
 
-    /// <summary>
-    /// Создать текстовый файл абонентской книги для тестирования приложения.
-    /// </summary>
-    public static void CreateFileForTest()
+    private Phonebook()
     {
-      if (!File.Exists(FilePhonebook))
-      {
-        try
-        {
-          StreamWriter sw = new StreamWriter(FilePhonebook);
-
-          sw.WriteLine($"1;Камилла;81221234569");
-          sw.WriteLine($"2;Оксана;81221111169");
-          sw.WriteLine($"3;Тимур;81221232222");
-
-          sw.Close();
-        }
-        catch (Exception e)
-        {
-          Console.WriteLine("Exception: " + e.Message);
-        }
-      }
+      Abonents = ReadAbonentsFromFile();
     }
   }
 }
