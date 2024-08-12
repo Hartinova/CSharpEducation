@@ -97,27 +97,6 @@ namespace Phonebook.Model
       this.phoneNumber = phoneNumber;
     }
 
-    /// <summary>
-    /// Получить новый идентификатор.
-    /// </summary>
-    /// <returns>Новый идентификатор.</returns>
-    private int NewId()
-    {
-      if (Phonebook.Instance.Abonents == null || Phonebook.Instance.Abonents.Count() == 0)
-      { 
-        return 1; 
-      }
-
-      return Phonebook.Instance.Abonents.Max(e => e.Id) + 1;
-    }
-
-    public Abonent(string name, string phone)
-    {
-      this.Id = NewId();
-      this.Name = name;
-      this.phoneNumber = phone;
-    }
-
     public Abonent(int id, string name, string phone)
     {
       this.Id = id;

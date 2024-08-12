@@ -66,9 +66,9 @@ namespace Phonebook.Model
             }
             else
             {
-              Abonents.Add(new Abonent(array[1], array[2]));
+              Abonents.Add(new Abonent(GetNewAbonentId(), array[1], array[2]));
             }
-                       
+
             line = sr.ReadLine();
           }
 
@@ -84,6 +84,20 @@ namespace Phonebook.Model
     }
 
     /// <summary>
+    /// Получить новый идентификатор для абонента.
+    /// </summary>
+    /// <returns>Новый идентификатор для абонента.</returns>
+    private int GetNewAbonentId()
+    {
+      if (Phonebook.Instance.Abonents == null || Phonebook.Instance.Abonents.Count() == 0)
+      {
+        return 1;
+      }
+
+      return Phonebook.Instance.Abonents.Max(e => e.Id) + 1;
+    }
+
+    /// <summary>
     /// Добавить абонента в список.
     /// </summary>
     /// <param name="name">Имя абонента.</param>
@@ -93,7 +107,7 @@ namespace Phonebook.Model
     {
       if (!GetPhoneNumberByName(name, out string number))
       {
-        var abonent = new Abonent(name, phoneNumber);
+        var abonent = new Abonent(GetNewAbonentId(), name, phoneNumber);
         Abonents.Add(abonent);
       }
       else
@@ -121,7 +135,7 @@ namespace Phonebook.Model
     {
       number = "";
       bool result = false;
-      name=name.Trim().ToLower();
+      name = name.Trim().ToLower();
 
       var abonent = Abonents.Where(e => e.NameLower == name).FirstOrDefault();
       if (abonent != null)
@@ -143,7 +157,7 @@ namespace Phonebook.Model
     {
       name = "";
       bool result = false;
-      number=number.Trim();
+      number = number.Trim();
 
       var abonent = Abonents.Where(e => e.PhoneNumber == number).FirstOrDefault();
       if (abonent != null)
