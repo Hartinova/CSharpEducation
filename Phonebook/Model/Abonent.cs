@@ -24,16 +24,31 @@ namespace Phonebook.Model
     /// <summary>
     /// Имя абонента.
     /// </summary>
-    public string Name { get; private set; }
+    private string name;
 
     /// <summary>
-    /// Имя в нижнем регистре (свойство необходимо для сравнения при поиске по имени).
+    /// Имя абонента.
     /// </summary>
-    public string NameTrimLower
+    public string Name 
     {
       get
       {
-        return Name.Trim().ToLower();
+        return name;
+      } 
+      private set
+      {
+        name = value.Trim();
+      }
+    }
+    
+    /// <summary>
+    /// Имя в нижней раскладке.
+    /// </summary>
+    public string NameLower
+    {
+      get
+      { 
+        return name.ToLower(); 
       }
     }
 
@@ -88,12 +103,12 @@ namespace Phonebook.Model
     /// <returns>Новый идентификатор.</returns>
     private int NewId()
     {
-      if (Phonebook.SinglePhonebook.Abonents == null || Phonebook.SinglePhonebook.Abonents.Count() == 0)
+      if (Phonebook.Instance.Abonents == null || Phonebook.Instance.Abonents.Count() == 0)
       { 
         return 1; 
       }
 
-      return Phonebook.SinglePhonebook.Abonents.Max(e => e.Id) + 1;
+      return Phonebook.Instance.Abonents.Max(e => e.Id) + 1;
     }
 
     public Abonent(string name, string phone)
@@ -103,19 +118,11 @@ namespace Phonebook.Model
       this.phoneNumber = phone;
     }
 
-    public Abonent(string lineFromFile)
+    public Abonent(int id, string name, string phone)
     {
-      var array = lineFromFile.Trim().Split(';');
-      if (int.TryParse(array[0], out int id))
-      {
-        Id = id;
-      }
-      else
-      {
-        Id = NewId();
-      }
-      Name = array[1];
-      PhoneNumber = array[2];
+      this.Id = id;
+      this.Name = name;
+      this.phoneNumber = phone;
     }
   }
 }

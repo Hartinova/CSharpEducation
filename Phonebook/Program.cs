@@ -15,7 +15,7 @@ namespace Phonebook
     {
       CreateFileForTest(); 
 
-      Book phonebook = Book.SinglePhonebook;
+      Book phonebook = Book.Instance;
 
       Console.WriteLine("Cписок абонентов из файла:");
       phonebook.PrintAbonents();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace Phonebook.Model
 {
@@ -29,7 +30,7 @@ namespace Phonebook.Model
     /// Получить единственный экземпляр класса Телефонная книга.
     /// </summary>
     /// <returns></returns>
-    public static Phonebook SinglePhonebook
+    public static Phonebook Instance
     {
       get
       {
@@ -55,10 +56,19 @@ namespace Phonebook.Model
         {
           StreamReader sr = new StreamReader(FilePhonebook);
 
-          string line = sr.ReadLine();
+          string line = sr.ReadLine().Trim();
           while (line != null)
           {
-            Abonents.Add(new Abonent(line));
+            var array = line.Split(';');
+            if (int.TryParse(array[0], out int id))
+            {
+              Abonents.Add(new Abonent(id, array[1], array[2]));
+            }
+            else
+            {
+              Abonents.Add(new Abonent(array[1], array[2]));
+            }
+                       
             line = sr.ReadLine();
           }
 
@@ -113,7 +123,7 @@ namespace Phonebook.Model
       bool result = false;
       name=name.Trim().ToLower();
 
-      var abonent = Abonents.Where(e => e.NameTrimLower == name).FirstOrDefault();
+      var abonent = Abonents.Where(e => e.NameLower == name).FirstOrDefault();
       if (abonent != null)
       {
         number = abonent.PhoneNumber;
