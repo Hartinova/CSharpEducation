@@ -39,7 +39,7 @@ namespace EmployeeAccountingSystem.Model
     /// <summary>
     /// Получить единственный экземпляр класса.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Единственный экземпляр класса.</returns>
     public static TimeTableAccounting Instance
     {
       get
@@ -51,7 +51,6 @@ namespace EmployeeAccountingSystem.Model
         return instance;
       }
     }
-
 
     /// <summary>
     /// Список табелей учета рабочего времени.
@@ -294,7 +293,7 @@ namespace EmployeeAccountingSystem.Model
     /// <exception cref="ArgumentOutOfRangeException">Ошибка возникает, если неверно задан месяц.</exception>
     public void PrintSalaries(int month)
     {
-      if (month<=0 || month>12)
+      if (month <= 0 || month > 12)
       {
         throw new ArgumentOutOfRangeException("Неверно задан месяц.");
       }
@@ -318,7 +317,7 @@ namespace EmployeeAccountingSystem.Model
 
     #endregion
 
-    #region Конструктор
+    #region Конструкторы
 
     /// <summary>
     /// Конструктор.

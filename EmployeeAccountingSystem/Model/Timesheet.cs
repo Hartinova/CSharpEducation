@@ -54,7 +54,7 @@ namespace EmployeeAccountingSystem.Model
     /// <summary>
     /// Получить значение зарплаты сотрудника за месяц.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Зарплата сотрудника за месяц.</returns>
     public double GetSalary()
     {
       double? result = 0;
@@ -81,7 +81,7 @@ namespace EmployeeAccountingSystem.Model
 
     #endregion
 
-    #region Конструктор
+    #region Конструкторы
 
     /// <summary>
     /// Конструктор.

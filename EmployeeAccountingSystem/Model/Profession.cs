@@ -40,7 +40,7 @@ namespace EmployeeAccountingSystem.Model
 
     #endregion
 
-    #region Конструктор
+    #region Конструкторы
 
     /// <summary>
     /// Конструктор.
