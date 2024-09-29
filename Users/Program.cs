@@ -69,6 +69,8 @@ namespace Users
       }
       Console.WriteLine();
 
+      var t = users[0];
+
       Console.ReadLine();
     }
   }

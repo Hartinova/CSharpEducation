@@ -17,7 +17,7 @@ namespace Users.Model
 
     #endregion
 
-    #region
+    #region IEquatable
 
     /// <summary>
     /// Сравнить с персоной (Реализация интерфейса IEquatable).
@@ -36,7 +36,7 @@ namespace Users.Model
 
     #endregion
 
-    #region Конструткоры
+    #region Конструкторы
 
     /// <summary>
     /// Конструктор.

@@ -16,6 +16,42 @@ namespace Users.Model
     /// </summary>
     private List<Person> list;
 
+    /// <summary>
+    /// Индексатор.
+    /// </summary>
+    /// <param name="index">Индекс элемента.</param>
+    /// <returns>Пользователь из списка пользователей, находящийся под указанным индексом.</returns>
+    /// <exception cref="Exception">Ошибка возникает, если список пользователей пуст.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Ошибка возникает, если задан недопустимый индекс.</exception>
+    public Person this[int index]
+    {
+      get
+      {
+        if (list == null || list.Count == 0)
+        {
+          throw new Exception("Список пользователей пуст.");
+        }
+        if (index < 0 || index >= list.Count())
+        {
+          throw new ArgumentOutOfRangeException($"Индекс находится за пределами диапазона списка пользователей.");
+        }
+
+        return this.list[index];
+      }
+      set
+      {
+        if (list == null || list.Count == 0)
+        {
+          throw new Exception("Список пользователей пуст.");
+        }
+        if (index < 0 || index >= list.Count())
+        {
+          throw new ArgumentOutOfRangeException($"Индекс находится за пределами диапазона списка пользователей.");
+        }
+        this.list[index] = value;
+      }
+    }
+
     #endregion
 
     #region Методы
@@ -32,12 +68,12 @@ namespace Users.Model
       {
         throw new ArgumentNullException("Не задан пользователь для добавления.");
       }
-      if (list.Contains(user))
+      if (this.list.Contains(user))
       {
         throw new ArgumentException($"Пользователь {user.Name} уже заведен.");
       }
 
-      list.Add(user);
+      this.list.Add(user);
       Console.WriteLine($"Пользователь {user.Name} добавлен в список пользователей.");
     }
 
@@ -53,12 +89,12 @@ namespace Users.Model
       {
         throw new ArgumentNullException("Не задан пользователь для удаления.");
       }
-      if (!list.Contains(user))
+      if (!this.list.Contains(user))
       {
         throw new ArgumentException($"В списке пользователей не найден пользователь {user.Name}.");
       }
 
-      list.Remove(user);
+      this.list.Remove(user);
       Console.WriteLine($"Пользователь {user.Name} удален из списка пользователей.");
     }
 
@@ -68,13 +104,13 @@ namespace Users.Model
     /// <exception cref="ArgumentNullException">Ошибка возникает, если список пользователей пуст.</exception>
     public void Print()
     {
-      if (list == null || list.Count() == 0)
+      if (this.list == null || this.list.Count() == 0)
       {
         throw new ArgumentNullException("Список пользователей пуст.");
       }
 
       Console.WriteLine("Список пользователей:");
-      foreach (var item in list)
+      foreach (var item in this.list)
       {
         Console.WriteLine(item.Name);
       }
@@ -90,7 +126,7 @@ namespace Users.Model
     /// </summary>
     public UserList()
     {
-      list = new List<Person>();
+      this.list = new List<Person>();
     }
 
     /// <summary>
