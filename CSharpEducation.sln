@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task4", "Task4", "{EE68D969
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeAccountingSystem", "EmployeeAccountingSystem\EmployeeAccountingSystem.csproj", "{52928224-01C6-43F5-9341-988671D1D990}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task5", "Task5", "{EF3F089F-FDC9-4F8B-9C6B-EFFE391D83EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users", "Users\Users.csproj", "{D8A540CD-25D0-4E38-8326-E35BECB86D37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,10 @@ Global
 		{52928224-01C6-43F5-9341-988671D1D990}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52928224-01C6-43F5-9341-988671D1D990}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52928224-01C6-43F5-9341-988671D1D990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8A540CD-25D0-4E38-8326-E35BECB86D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8A540CD-25D0-4E38-8326-E35BECB86D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8A540CD-25D0-4E38-8326-E35BECB86D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8A540CD-25D0-4E38-8326-E35BECB86D37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +55,7 @@ Global
 		{6E7DC162-3EEB-4407-8887-F23453542342} = {1F328E83-3620-4C2E-BB9A-0554765F870E}
 		{BC0F67BF-7D2B-471B-97EC-68D00E0381E1} = {77B762F8-7306-48B4-831A-B032263524D0}
 		{52928224-01C6-43F5-9341-988671D1D990} = {EE68D969-C1FB-4CFF-81FA-FA065D25614A}
+		{D8A540CD-25D0-4E38-8326-E35BECB86D37} = {EF3F089F-FDC9-4F8B-9C6B-EFFE391D83EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {69E72AB8-D1D6-41AF-92A8-E74D21B7D630}
